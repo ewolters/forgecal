@@ -27,6 +27,7 @@ logger = logging.getLogger("forgecal.discovery")
 # Known forge packages to scan. Add new packages here.
 KNOWN_PACKAGES = [
     "forgespc",
+    "forgestat",
     "forgestats",
     "forgeeda",
     "forgeml",

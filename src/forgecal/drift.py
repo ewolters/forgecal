@@ -15,7 +15,7 @@ from __future__ import annotations
 
 import json
 import statistics
-from dataclasses import asdict, dataclass, field
+from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -172,7 +172,7 @@ def _analyze_case_drift(
     # ── New failure / recovery ──
     hist_passed = [hc.get("passed", False) for hc in hist_cases]
     was_passing = all(hist_passed[-3:]) if len(hist_passed) >= 3 else all(hist_passed)
-    was_failing = not any(hist_passed[-3:]) if len(hist_passed) >= 3 else not any(hist_passed)
+    was_failing = all(not p for p in (hist_passed[-3:] if len(hist_passed) >= 3 else hist_passed))
 
     if not current.passed and was_passing:
         alerts.append(DriftAlert(
@@ -190,7 +190,7 @@ def _analyze_case_drift(
             package=current.package,
             alert_type="recovery",
             metric_key="passed",
-            detail=f"Case was failing, now passes",
+            detail="Case was failing, now passes",
             severity="warning",
         ))
 

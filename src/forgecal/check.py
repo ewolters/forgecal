@@ -166,8 +166,8 @@ def _numeric_check(
 
     elif exp.comparison == "rel_within":
         if abs(expected_f) < 1e-15:
-            base.detail = "Cannot compute relative deviation: expected ≈ 0"
-            base.passed = abs(actual_f) < 1e-10
+            base.detail = "Expected ≈ 0: falling back to absolute comparison"
+            base.passed = abs(actual_f) <= exp.tolerance
         else:
             rel_dev = abs(actual_f - expected_f) / abs(expected_f)
             base.deviation = rel_dev

@@ -1,0 +1,191 @@
+[
+  {
+    "case_id": "CAL-R-DOE-001",
+    "description": "2^3 full factorial: 8 runs, 3 factors",
+    "package": "forgedoe",
+    "category": "factorial",
+    "data": {
+      "matrix": {
+        "A": [-1, 1, -1, 1, -1, 1, -1, 1],
+        "B": [-1, -1, 1, 1, -1, -1, 1, 1],
+        "C": [-1, -1, -1, -1, 1, 1, 1, 1]
+      }
+    },
+    "config": {
+      "k": 3,
+      "type": "full"
+    },
+    "expectations": [
+      {
+        "key": "n_runs",
+        "expected": 8,
+        "tolerance": 0,
+        "comparison": "equals"
+      },
+      {
+        "key": "n_factors",
+        "expected": 3,
+        "tolerance": 0,
+        "comparison": "equals"
+      }
+    ]
+  },
+  {
+    "case_id": "CAL-R-DOE-002",
+    "description": "2^(5-1) fractional factorial: 16 runs, Res V",
+    "package": "forgedoe",
+    "category": "factorial",
+    "data": {
+      "matrix": {
+        "A": ["-1", "1", "-1", "1", "-1", "1", "-1", "1", "-1", "1", "-1", "1", "-1", "1", "-1", "1"],
+        "B": ["-1", "-1", "1", "1", "-1", "-1", "1", "1", "-1", "-1", "1", "1", "-1", "-1", "1", "1"],
+        "C": ["-1", "-1", "-1", "-1", "1", "1", "1", "1", "-1", "-1", "-1", "-1", "1", "1", "1", "1"],
+        "D": ["-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "1", "1", "1", "1", "1", "1", "1", "1"],
+        "E": ["1", "-1", "-1", "1", "-1", "1", "1", "-1", "-1", "1", "1", "-1", "1", "-1", "-1", "1"]
+      }
+    },
+    "config": {
+      "k": 5,
+      "resolution": 5
+    },
+    "expectations": [
+      {
+        "key": "n_runs",
+        "expected": 16,
+        "tolerance": 0,
+        "comparison": "equals"
+      },
+      {
+        "key": "n_factors",
+        "expected": 5,
+        "tolerance": 0,
+        "comparison": "equals"
+      }
+    ]
+  },
+  {
+    "case_id": "CAL-R-DOE-003",
+    "description": "CCD: 3 factors, rotatable",
+    "package": "forgedoe",
+    "category": "response_surface",
+    "data": [],
+    "config": {
+      "k": 3,
+      "type": "ccd"
+    },
+    "expectations": [
+      {
+        "key": "n_factorial",
+        "expected": 8,
+        "tolerance": 0,
+        "comparison": "equals"
+      },
+      {
+        "key": "n_factors",
+        "expected": 3,
+        "tolerance": 0,
+        "comparison": "equals"
+      },
+      {
+        "key": "n_runs",
+        "expected": 14,
+        "tolerance": 0,
+        "comparison": "greater_than"
+      }
+    ]
+  },
+  {
+    "case_id": "CAL-R-DOE-004",
+    "description": "Box-Behnken: 3 factors",
+    "package": "forgedoe",
+    "category": "response_surface",
+    "data": [],
+    "config": {
+      "k": 3,
+      "type": "bbd"
+    },
+    "expectations": [
+      {
+        "key": "n_runs",
+        "expected": 14,
+        "tolerance": 0,
+        "comparison": "equals"
+      },
+      {
+        "key": "n_factors",
+        "expected": 3,
+        "tolerance": 0,
+        "comparison": "equals"
+      }
+    ]
+  },
+  {
+    "case_id": "CAL-R-DOE-005",
+    "description": "Plackett-Burman: 7 factors, 12 runs",
+    "package": "forgedoe",
+    "category": "screening",
+    "data": [],
+    "config": {
+      "k": 7,
+      "type": "pb"
+    },
+    "expectations": [
+      {
+        "key": "n_runs",
+        "expected": 12,
+        "tolerance": 0,
+        "comparison": "equals"
+      },
+      {
+        "key": "n_factors",
+        "expected": 7,
+        "tolerance": 0,
+        "comparison": "equals"
+      }
+    ]
+  },
+  {
+    "case_id": "CAL-R-DOE-006",
+    "description": "RSM quadratic fit: y = 10 + 3x1 - 2x2 + 1.5x1x2 - x1² - 0.5x2²",
+    "package": "forgedoe",
+    "category": "analysis",
+    "data": {
+      "x1": [0.83049338358, 0.52665867656, 0.61137128342, 0.46755609289, 0.36413573381, -0.97593940748, 0.51686098706, -0.002096044831, -0.067782554775, 0.80202126643, 0.8832826335, -0.36093195388, 0.58629553858, 0.16719548311, 0.30698632961, 0.97127267998, 0.77475490374, 0.32650948362, 0.27747083409, 0.0039187963121],
+      "x2": [0.97332726419, -0.012501882389, -0.072142189369, -0.87775702728, -0.8120031436, -0.95996188046, 0.053047932219, 0.79026038339, 0.39146980084, -0.54863698687, 0.039901312441, 0.4270022111, 0.85773195932, -0.22963987291, -0.80278281309, -0.085124202538, -0.20335500827, 0.51808578148, 0.23051706282, 0.54523817729],
+      "y": [10.4252260224, 11.63428492, 11.3792733431, 12.0061905269, 11.238247525, 8.8284822437, 11.3345165789, 8.7677832451, 8.8430106115, 12.5680202677, 11.6691655886, 7.7920316822, 9.6834207267, 10.7684267193, 12.1332313907, 12.1814466561, 11.5338464403, 9.9656209121, 10.2612505023, 8.1892885947]
+    },
+    "config": [],
+    "expectations": [
+      {
+        "key": "intercept",
+        "expected": 9.8993348025,
+        "tolerance": 0.5,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "beta_x1",
+        "expected": 2.7877890838,
+        "tolerance": 0.3,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "beta_x2",
+        "expected": -1.8174936811,
+        "tolerance": 0.3,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "r_squared",
+        "expected": 0.95517443665,
+        "tolerance": 0.01,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "r_squared",
+        "expected": 0.9,
+        "tolerance": 0,
+        "comparison": "greater_than"
+      }
+    ]
+  }
+]

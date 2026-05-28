@@ -1,0 +1,150 @@
+[
+  {
+    "case_id": "CAL-R-REL-001",
+    "description": "Weibull 2P MLE: shape=2.5, scale=100, n=50 complete",
+    "package": "forgerel",
+    "category": "weibull",
+    "data": {
+      "times": [38.0049638809, 33.5075494778, 109.3808275146, 51.0045971794, 72.2407586098, 84.46430414, 62.2490931063, 132.0814099562, 70.686103242, 65.6692062397, 90.6067372647, 64.1604646554, 34.0309585704, 113.2476156528, 90.1461441728, 32.8521530448, 21.7310386133, 135.6066875988, 88.8655482848, 80.378290247, 39.9522564616, 131.2983482227, 16.5663920813, 31.2991892827, 144.1710083926, 84.9493421939, 97.6004687075, 39.6518034746, 91.7012910562, 50.2642440182, 62.1376425068, 53.5065103922, 97.8234344166, 67.7699983513, 198.257722126, 50.6770993615, 189.0675423098, 119.8299380512, 39.4987424958, 75.2607724821, 98.7378614301, 92.8462829449, 160.9265284223, 23.5158425962, 93.2593115443, 28.4966557542, 42.687993377, 72.4200210543, 24.4181048687, 74.5528813807]
+    },
+    "config": {
+      "censored": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    },
+    "expectations": [
+      {
+        "key": "beta",
+        "expected": 1.9566883505,
+        "tolerance": 0.15,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "eta",
+        "expected": 87.4514451834,
+        "tolerance": 5,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "beta",
+        "expected": [1.5, 4],
+        "tolerance": 0,
+        "comparison": "between"
+      },
+      {
+        "key": "eta",
+        "expected": [70, 140],
+        "tolerance": 0,
+        "comparison": "between"
+      }
+    ]
+  },
+  {
+    "case_id": "CAL-R-REL-002",
+    "description": "Weibull 2P MLE with right censoring at t=400",
+    "package": "forgerel",
+    "category": "weibull",
+    "data": {
+      "times": [353.82797673, 400, 291.8379656512, 33.0424705691, 385.2681953264, 76.3505733089, 299.8433270212, 400, 400, 400, 376.457961134, 400, 400, 321.3058964867, 289.6291147878, 319.2641274485, 400, 400, 400, 400, 400, 400, 202.4734592874, 349.820891826, 235.033526041, 400, 400, 207.4028944032, 400, 400],
+      "censored": [1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0]
+    },
+    "config": {
+      "censor_time": 400
+    },
+    "expectations": [
+      {
+        "key": "beta",
+        "expected": 2.0728455401,
+        "tolerance": 0.3,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "eta",
+        "expected": 508.8229008575,
+        "tolerance": 30,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "beta",
+        "expected": [1, 3.5],
+        "tolerance": 0,
+        "comparison": "between"
+      },
+      {
+        "key": "eta",
+        "expected": [300, 800],
+        "tolerance": 0,
+        "comparison": "between"
+      }
+    ]
+  },
+  {
+    "case_id": "CAL-R-REL-003",
+    "description": "Kaplan-Meier survival curve with censoring",
+    "package": "forgerel",
+    "category": "survival",
+    "data": {
+      "times": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "events": [1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1]
+    },
+    "config": [],
+    "expectations": [
+      {
+        "key": "survival_at_6",
+        "expected": 0.61875,
+        "tolerance": 0.02,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "survival_at_6",
+        "expected": [0.3, 0.9],
+        "tolerance": 0,
+        "comparison": "between"
+      }
+    ]
+  },
+  {
+    "case_id": "CAL-R-REL-004",
+    "description": "MTBF chi-square CI: 5 failures in 10000 hrs",
+    "package": "forgerel",
+    "category": "mtbf",
+    "data": {
+      "total_time": 10000,
+      "n_failures": 5
+    },
+    "config": {
+      "confidence": 0.9,
+      "test_type": "failure_truncated"
+    },
+    "expectations": [
+      {
+        "key": "mtbf_point",
+        "expected": 2000,
+        "tolerance": 1,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "mtbf_lower",
+        "expected": 1092.4760161528,
+        "tolerance": 10,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "mtbf_upper",
+        "expected": 5075.7567659441,
+        "tolerance": 50,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "mtbf_upper",
+        "expected": 2000,
+        "tolerance": 0,
+        "comparison": "greater_than"
+      },
+      {
+        "key": "mtbf_lower",
+        "expected": 2000,
+        "tolerance": 0,
+        "comparison": "less_than"
+      }
+    ]
+  }
+]

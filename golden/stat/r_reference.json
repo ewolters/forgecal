@@ -1,0 +1,365 @@
+[
+  {
+    "case_id": "CAL-R-STAT-001",
+    "description": "One-sample t-test: 10 values, μ₀=0",
+    "package": "forgestat",
+    "category": "ttest_one_sample",
+    "data": {
+      "data": [10, 12, 11, 13, 14, 12, 11, 10, 15, 13]
+    },
+    "config": {
+      "mu": 0
+    },
+    "expectations": [
+      {
+        "key": "t_statistic",
+        "expected": 23.004190294,
+        "tolerance": 0.001,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "p_value",
+        "expected": 2.6341656622e-09,
+        "tolerance": 0.0001,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "cohens_d",
+        "expected": 7.2745637057,
+        "tolerance": 0.01,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "df",
+        "expected": 9,
+        "tolerance": 0.001,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "mean",
+        "expected": 12.1,
+        "tolerance": 0.001,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "p_value",
+        "expected": 0.001,
+        "tolerance": 0,
+        "comparison": "less_than"
+      }
+    ]
+  },
+  {
+    "case_id": "CAL-R-STAT-002",
+    "description": "Two-sample Welch t-test: 10-unit gap",
+    "package": "forgestat",
+    "category": "ttest_two_sample",
+    "data": {
+      "x1": [10, 12, 11, 13, 14, 15, 12, 11],
+      "x2": [20, 22, 21, 23, 24, 25, 22, 21]
+    },
+    "config": [],
+    "expectations": [
+      {
+        "key": "t_statistic",
+        "expected": -11.9828937903,
+        "tolerance": 0.001,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "p_value",
+        "expected": 9.5261601245e-09,
+        "tolerance": 0.0001,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "df",
+        "expected": 14,
+        "tolerance": 0.01,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "p_value",
+        "expected": 0.001,
+        "tolerance": 0,
+        "comparison": "less_than"
+      }
+    ]
+  },
+  {
+    "case_id": "CAL-R-STAT-003",
+    "description": "Paired t-test: consistent +2 shift",
+    "package": "forgestat",
+    "category": "ttest_paired",
+    "data": {
+      "x1": [10, 12, 11, 13, 14, 15, 12, 11, 10, 13],
+      "x2": [12.1, 13.8, 13.2, 15, 16.3, 16.7, 14.1, 13.4, 11.8, 15.2]
+    },
+    "config": [],
+    "expectations": [
+      {
+        "key": "t_statistic",
+        "expected": -28.0909090909,
+        "tolerance": 0.001,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "p_value",
+        "expected": 4.4630139097e-10,
+        "tolerance": 0.0001,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "mean_diff",
+        "expected": -2.06,
+        "tolerance": 0.001,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "p_value",
+        "expected": 0.05,
+        "tolerance": 0,
+        "comparison": "less_than"
+      }
+    ]
+  },
+  {
+    "case_id": "CAL-R-STAT-004",
+    "description": "One-way ANOVA: 3 groups, 10-unit gaps",
+    "package": "forgestat",
+    "category": "anova_one_way",
+    "data": {
+      "low": [10, 12, 11, 13, 14],
+      "med": [20, 22, 21, 23, 24],
+      "high": [30, 32, 31, 33, 34]
+    },
+    "config": [],
+    "expectations": [
+      {
+        "key": "f_statistic",
+        "expected": 200,
+        "tolerance": 0.01,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "p_value",
+        "expected": 6.1052602312e-10,
+        "tolerance": 0.0001,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "ss_between",
+        "expected": 1000,
+        "tolerance": 0.01,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "ss_within",
+        "expected": 30,
+        "tolerance": 0.01,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "eta_squared",
+        "expected": 0.97087378641,
+        "tolerance": 0.001,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "eta_squared",
+        "expected": 0.9,
+        "tolerance": 0,
+        "comparison": "greater_than"
+      }
+    ]
+  },
+  {
+    "case_id": "CAL-R-STAT-005",
+    "description": "Pearson correlation: strong linear",
+    "package": "forgestat",
+    "category": "correlation",
+    "data": {
+      "x": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "y": [2.1, 3.9, 6.2, 7.8, 10.1, 12.3, 13.9, 16, 18.2, 20.1]
+    },
+    "config": [],
+    "expectations": [
+      {
+        "key": "r",
+        "expected": 0.99967567197,
+        "tolerance": 0.0001,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "p_value",
+        "expected": 4.8389033443e-14,
+        "tolerance": 0.0001,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "t_statistic",
+        "expected": 111.0278921042,
+        "tolerance": 0.001,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "r",
+        "expected": 0.99,
+        "tolerance": 0,
+        "comparison": "greater_than"
+      }
+    ]
+  },
+  {
+    "case_id": "CAL-R-STAT-006",
+    "description": "Chi-square test of independence: 2x3",
+    "package": "forgestat",
+    "category": "chi_square",
+    "data": {
+      "observed": {
+        "V1": [50, 40],
+        "V2": [30, 60],
+        "V3": [20, 50]
+      }
+    },
+    "config": [],
+    "expectations": [
+      {
+        "key": "chi_sq",
+        "expected": 14.5502645503,
+        "tolerance": 0.01,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "p_value",
+        "expected": 0.0006925485077,
+        "tolerance": 0.001,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "df",
+        "expected": 2,
+        "tolerance": 0.001,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "cramers_v",
+        "expected": 0.24124895482,
+        "tolerance": 0.01,
+        "comparison": "abs_within"
+      }
+    ]
+  },
+  {
+    "case_id": "CAL-R-STAT-007",
+    "description": "Mann-Whitney U: two separated groups",
+    "package": "forgestat",
+    "category": "mann_whitney",
+    "data": {
+      "a": [5, 7, 3, 8, 6],
+      "b": [12, 15, 10, 14, 11]
+    },
+    "config": [],
+    "expectations": [
+      {
+        "key": "U_statistic",
+        "expected": 0,
+        "tolerance": 0.5,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "p_value",
+        "expected": 0.012185780355,
+        "tolerance": 0.005,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "p_value",
+        "expected": 0.05,
+        "tolerance": 0,
+        "comparison": "less_than"
+      }
+    ]
+  },
+  {
+    "case_id": "CAL-R-STAT-008",
+    "description": "Kruskal-Wallis: 3 widely separated groups",
+    "package": "forgestat",
+    "category": "kruskal_wallis",
+    "data": {
+      "g1": [10, 12, 11, 13, 14],
+      "g2": [20, 22, 21, 23, 24],
+      "g3": [30, 32, 31, 33, 34]
+    },
+    "config": [],
+    "expectations": [
+      {
+        "key": "H_statistic",
+        "expected": 12.5,
+        "tolerance": 0.01,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "p_value",
+        "expected": 0.0019304541362,
+        "tolerance": 0.001,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "df",
+        "expected": 2,
+        "tolerance": 0.001,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "p_value",
+        "expected": 0.01,
+        "tolerance": 0,
+        "comparison": "less_than"
+      }
+    ]
+  },
+  {
+    "case_id": "CAL-R-STAT-009",
+    "description": "Simple linear regression: y = 3 + 2.5x + ε",
+    "package": "forgestat",
+    "category": "regression",
+    "data": {
+      "x": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+      "y": [5.6201390841, 6.1876231498, 10.6515829836, 11.8807789955, 15.5019082063, 19.1885184943, 19.9946561446, 22.9007656065, 25.8053531991, 28.1984097025, 30.4510890497, 32.156766233, 33.4247292294, 37.6392368519, 39.8623103392, 42.6337219703, 47.855363898, 49.0933772349, 50.7858410011, 53.9936577773]
+    },
+    "config": [],
+    "expectations": [
+      {
+        "key": "intercept",
+        "expected": 2.3214286497,
+        "tolerance": 0.5,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "slope",
+        "expected": 2.5590345531,
+        "tolerance": 0.05,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "r_squared",
+        "expected": 0.99599710694,
+        "tolerance": 0.001,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "f_statistic",
+        "expected": 4478.7476648536,
+        "tolerance": 0.1,
+        "comparison": "abs_within"
+      },
+      {
+        "key": "r_squared",
+        "expected": 0.95,
+        "tolerance": 0,
+        "comparison": "greater_than"
+      }
+    ]
+  }
+]

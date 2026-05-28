@@ -1,0 +1,1032 @@
+{
+  "certificate_id": "CAL-20260528-194026",
+  "issued_at": "2026-05-28T19:40:26.105564+00:00",
+  "issued_by": "ForgeCal R Calibration Service",
+  "authority": "R Statistical Computing Environment",
+  "r_packages": {
+    "forgespc": "qcc",
+    "forgestat": "base R (t.test, aov, cor.test, chisq.test, lm)",
+    "forgedoe": "FrF2, rsm, DoE.base",
+    "forgerel": "WeibullR, survival"
+  },
+  "verdict": "NOT CALIBRATED",
+  "summary": {
+    "total_packages": 4,
+    "calibrated_packages": 2,
+    "total_checks": 99,
+    "passed_checks": 89,
+    "pass_rate": 0.899
+  },
+  "packages": {
+    "forgespc": {
+      "package": "forgespc",
+      "total_cases": 6,
+      "passed_cases": 6,
+      "total_checks": 28,
+      "passed_checks": 28,
+      "pass_rate": 1.0,
+      "is_calibrated": true,
+      "cases": [
+        {
+          "case_id": "CAL-R-SPC-001",
+          "description": "I-MR chart: N(50,2) n=30, sigma from MR/d2",
+          "passed": true,
+          "error": "",
+          "expectations": [
+            {
+              "key": "center",
+              "expected": 50.1371736696,
+              "actual": 50.13717366962667,
+              "tolerance": 0.01,
+              "passed": true,
+              "message": "|50.137174 - 50.137174| = 0.000000 <= 0.01"
+            },
+            {
+              "key": "sigma",
+              "expected": 2.4892966673,
+              "actual": 2.489296667333086,
+              "tolerance": 0.01,
+              "passed": true,
+              "message": "|2.489297 - 2.489297| = 0.000000 <= 0.01"
+            },
+            {
+              "key": "ucl",
+              "expected": 57.6050636716,
+              "actual": 57.60506367162593,
+              "tolerance": 0.01,
+              "passed": true,
+              "message": "|57.605064 - 57.605064| = 0.000000 <= 0.01"
+            },
+            {
+              "key": "lcl",
+              "expected": 42.6692836676,
+              "actual": 42.66928366762741,
+              "tolerance": 0.01,
+              "passed": true,
+              "message": "|42.669284 - 42.669284| = 0.000000 <= 0.01"
+            },
+            {
+              "key": "mr_bar",
+              "expected": 2.8079266407,
+              "actual": 2.8079266407517225,
+              "tolerance": 0.01,
+              "passed": true,
+              "message": "|2.807927 - 2.807927| = 0.000000 <= 0.01"
+            }
+          ]
+        },
+        {
+          "case_id": "CAL-R-SPC-002",
+          "description": "X-bar/R chart: N(25,1) 20 subgroups of 5",
+          "passed": true,
+          "error": "",
+          "expectations": [
+            {
+              "key": "xbar_center",
+              "expected": 25.0904059086,
+              "actual": 25.090405908631,
+              "tolerance": 0.01,
+              "passed": true,
+              "message": "|25.090406 - 25.090406| = 0.000000 <= 0.01"
+            },
+            {
+              "key": "xbar_ucl",
+              "expected": 26.3421882398,
+              "actual": 26.342618562793284,
+              "tolerance": 0.01,
+              "passed": true,
+              "message": "|26.342619 - 26.342188| = 0.000430 <= 0.01"
+            },
+            {
+              "key": "xbar_lcl",
+              "expected": 23.8386235775,
+              "actual": 23.838193254468713,
+              "tolerance": 0.01,
+              "passed": true,
+              "message": "|23.838193 - 23.838624| = 0.000430 <= 0.01"
+            },
+            {
+              "key": "r_bar",
+              "expected": 2.1702125722,
+              "actual": 2.170212572205,
+              "tolerance": 0.01,
+              "passed": true,
+              "message": "|2.170213 - 2.170213| = 0.000000 <= 0.01"
+            },
+            {
+              "key": "r_ucl",
+              "expected": 4.5888487058,
+              "actual": 4.58782937764137,
+              "tolerance": 0.01,
+              "passed": true,
+              "message": "|4.587829 - 4.588849| = 0.001019 <= 0.01"
+            },
+            {
+              "key": "sigma",
+              "expected": 0.93302346183,
+              "actual": 0.9333442056641017,
+              "tolerance": 0.01,
+              "passed": true,
+              "message": "|0.933344 - 0.933023| = 0.000321 <= 0.01"
+            }
+          ]
+        },
+        {
+          "case_id": "CAL-R-SPC-003",
+          "description": "Capability: N(50,2) LSL=40 USL=60",
+          "passed": true,
+          "error": "",
+          "expectations": [
+            {
+              "key": "cp",
+              "expected": 1.6383881956,
+              "actual": 1.6383881955796236,
+              "tolerance": 0.02,
+              "passed": true,
+              "message": "|1.638388 - 1.638388| = 0.000000 <= 0.02"
+            },
+            {
+              "key": "cpk",
+              "expected": 1.6277338176,
+              "actual": 1.627733817562774,
+              "tolerance": 0.02,
+              "passed": true,
+              "message": "|1.627734 - 1.627734| = 0.000000 <= 0.02"
+            },
+            {
+              "key": "cpl",
+              "expected": 1.6490425736,
+              "actual": 1.6490425735964729,
+              "tolerance": 0.02,
+              "passed": true,
+              "message": "|1.649043 - 1.649043| = 0.000000 <= 0.02"
+            },
+            {
+              "key": "cpu",
+              "expected": 1.6277338176,
+              "actual": 1.627733817562774,
+              "tolerance": 0.02,
+              "passed": true,
+              "message": "|1.627734 - 1.627734| = 0.000000 <= 0.02"
+            },
+            {
+              "key": "sigma_level",
+              "expected": 6.3832014527,
+              "actual": 6.383201452688322,
+              "tolerance": 0.1,
+              "passed": true,
+              "message": "|6.383201 - 6.383201| = 0.000000 <= 0.1"
+            },
+            {
+              "key": "cp",
+              "expected": 1,
+              "actual": 1.6383881955796236,
+              "tolerance": 0,
+              "passed": true,
+              "message": "1.638388 > 1"
+            },
+            {
+              "key": "cpk",
+              "expected": 1,
+              "actual": 1.627733817562774,
+              "tolerance": 0,
+              "passed": true,
+              "message": "1.627734 > 1"
+            }
+          ]
+        },
+        {
+          "case_id": "CAL-R-SPC-004",
+          "description": "p-chart: 20 samples of 100, p~0.05",
+          "passed": true,
+          "error": "",
+          "expectations": [
+            {
+              "key": "p_bar",
+              "expected": 0.0485,
+              "actual": 0.0485,
+              "tolerance": 0.005,
+              "passed": true,
+              "message": "|0.048500 - 0.048500| = 0.000000 <= 0.005"
+            },
+            {
+              "key": "ucl",
+              "expected": 0.11294608212,
+              "actual": 0.11294608211520697,
+              "tolerance": 0.005,
+              "passed": true,
+              "message": "|0.112946 - 0.112946| = 0.000000 <= 0.005"
+            },
+            {
+              "key": "lcl",
+              "expected": 0,
+              "actual": 0,
+              "tolerance": 0.005,
+              "passed": true,
+              "message": "|0.000000 - 0.000000| = 0.000000 <= 0.005"
+            }
+          ]
+        },
+        {
+          "case_id": "CAL-R-SPC-005",
+          "description": "c-chart: 25 samples, lambda~8 defects/unit",
+          "passed": true,
+          "error": "",
+          "expectations": [
+            {
+              "key": "c_bar",
+              "expected": 8.32,
+              "actual": 8.32,
+              "tolerance": 0.01,
+              "passed": true,
+              "message": "|8.320000 - 8.320000| = 0.000000 <= 0.01"
+            },
+            {
+              "key": "ucl",
+              "expected": 16.9733230611,
+              "actual": 16.973323061113575,
+              "tolerance": 0.1,
+              "passed": true,
+              "message": "|16.973323 - 16.973323| = 0.000000 <= 0.1"
+            },
+            {
+              "key": "lcl",
+              "expected": 0,
+              "actual": 0,
+              "tolerance": 0.1,
+              "passed": true,
+              "message": "|0.000000 - 0.000000| = 0.000000 <= 0.1"
+            }
+          ]
+        },
+        {
+          "case_id": "CAL-R-SPC-006",
+          "description": "Capability: well-centered N(100,0.5) LSL=97 USL=103",
+          "passed": true,
+          "error": "",
+          "expectations": [
+            {
+              "key": "cp",
+              "expected": 2.3092053663,
+              "actual": 2.3092053663261556,
+              "tolerance": 0.05,
+              "passed": true,
+              "message": "|2.309205 - 2.309205| = 0.000000 <= 0.05"
+            },
+            {
+              "key": "cpk",
+              "expected": 2.3068564167,
+              "actual": 2.3068564167367143,
+              "tolerance": 0.05,
+              "passed": true,
+              "message": "|2.306856 - 2.306856| = 0.000000 <= 0.05"
+            },
+            {
+              "key": "cp",
+              "expected": 1.5,
+              "actual": 2.3092053663261556,
+              "tolerance": 0,
+              "passed": true,
+              "message": "2.309205 > 1.5"
+            },
+            {
+              "key": "cpk",
+              "expected": 1.5,
+              "actual": 2.3068564167367143,
+              "tolerance": 0,
+              "passed": true,
+              "message": "2.306856 > 1.5"
+            }
+          ]
+        }
+      ]
+    },
+    "forgestat": {
+      "package": "forgestat",
+      "total_cases": 9,
+      "passed_cases": 9,
+      "total_checks": 40,
+      "passed_checks": 40,
+      "pass_rate": 1.0,
+      "is_calibrated": true,
+      "cases": [
+        {
+          "case_id": "CAL-R-STAT-001",
+          "description": "One-sample t-test: 10 values, \u03bc\u2080=0",
+          "passed": true,
+          "error": "",
+          "expectations": [
+            {
+              "key": "t_statistic",
+              "expected": 23.004190294,
+              "actual": 23.004190294038548,
+              "tolerance": 0.001,
+              "passed": true,
+              "message": "|23.004190 - 23.004190| = 0.000000 <= 0.001"
+            },
+            {
+              "key": "p_value",
+              "expected": 2.6341656622e-09,
+              "actual": 2.634165662214712e-09,
+              "tolerance": 0.0001,
+              "passed": true,
+              "message": "|0.000000 - 0.000000| = 0.000000 <= 0.0001"
+            },
+            {
+              "key": "cohens_d",
+              "expected": 7.2745637057,
+              "actual": 7.274563705710036,
+              "tolerance": 0.01,
+              "passed": true,
+              "message": "|7.274564 - 7.274564| = 0.000000 <= 0.01"
+            },
+            {
+              "key": "df",
+              "expected": 9,
+              "actual": 9.0,
+              "tolerance": 0.001,
+              "passed": true,
+              "message": "|9.000000 - 9.000000| = 0.000000 <= 0.001"
+            },
+            {
+              "key": "mean",
+              "expected": 12.1,
+              "actual": 12.1,
+              "tolerance": 0.001,
+              "passed": true,
+              "message": "|12.100000 - 12.100000| = 0.000000 <= 0.001"
+            },
+            {
+              "key": "p_value",
+              "expected": 0.001,
+              "actual": 2.634165662214712e-09,
+              "tolerance": 0,
+              "passed": true,
+              "message": "0.000000 < 0.001"
+            }
+          ]
+        },
+        {
+          "case_id": "CAL-R-STAT-002",
+          "description": "Two-sample Welch t-test: 10-unit gap",
+          "passed": true,
+          "error": "",
+          "expectations": [
+            {
+              "key": "t_statistic",
+              "expected": -11.9828937903,
+              "actual": -11.982893790305562,
+              "tolerance": 0.001,
+              "passed": true,
+              "message": "|-11.982894 - -11.982894| = 0.000000 <= 0.001"
+            },
+            {
+              "key": "p_value",
+              "expected": 9.5261601245e-09,
+              "actual": 9.526160124455426e-09,
+              "tolerance": 0.0001,
+              "passed": true,
+              "message": "|0.000000 - 0.000000| = 0.000000 <= 0.0001"
+            },
+            {
+              "key": "df",
+              "expected": 14,
+              "actual": 14.0,
+              "tolerance": 0.01,
+              "passed": true,
+              "message": "|14.000000 - 14.000000| = 0.000000 <= 0.01"
+            },
+            {
+              "key": "p_value",
+              "expected": 0.001,
+              "actual": 9.526160124455426e-09,
+              "tolerance": 0,
+              "passed": true,
+              "message": "0.000000 < 0.001"
+            }
+          ]
+        },
+        {
+          "case_id": "CAL-R-STAT-003",
+          "description": "Paired t-test: consistent +2 shift",
+          "passed": true,
+          "error": "",
+          "expectations": [
+            {
+              "key": "t_statistic",
+              "expected": -28.0909090909,
+              "actual": -28.090909090909097,
+              "tolerance": 0.001,
+              "passed": true,
+              "message": "|-28.090909 - -28.090909| = 0.000000 <= 0.001"
+            },
+            {
+              "key": "p_value",
+              "expected": 4.4630139097e-10,
+              "actual": 4.4630139096820673e-10,
+              "tolerance": 0.0001,
+              "passed": true,
+              "message": "|0.000000 - 0.000000| = 0.000000 <= 0.0001"
+            },
+            {
+              "key": "mean_diff",
+              "expected": -2.06,
+              "actual": -2.06,
+              "tolerance": 0.001,
+              "passed": true,
+              "message": "|-2.060000 - -2.060000| = 0.000000 <= 0.001"
+            },
+            {
+              "key": "p_value",
+              "expected": 0.05,
+              "actual": 4.4630139096820673e-10,
+              "tolerance": 0,
+              "passed": true,
+              "message": "0.000000 < 0.05"
+            }
+          ]
+        },
+        {
+          "case_id": "CAL-R-STAT-004",
+          "description": "One-way ANOVA: 3 groups, 10-unit gaps",
+          "passed": true,
+          "error": "",
+          "expectations": [
+            {
+              "key": "f_statistic",
+              "expected": 200,
+              "actual": 200.0,
+              "tolerance": 0.01,
+              "passed": true,
+              "message": "|200.000000 - 200.000000| = 0.000000 <= 0.01"
+            },
+            {
+              "key": "p_value",
+              "expected": 6.1052602312e-10,
+              "actual": 6.10526023122384e-10,
+              "tolerance": 0.0001,
+              "passed": true,
+              "message": "|0.000000 - 0.000000| = 0.000000 <= 0.0001"
+            },
+            {
+              "key": "ss_between",
+              "expected": 1000,
+              "actual": 1000.0,
+              "tolerance": 0.01,
+              "passed": true,
+              "message": "|1000.000000 - 1000.000000| = 0.000000 <= 0.01"
+            },
+            {
+              "key": "ss_within",
+              "expected": 30,
+              "actual": 30.0,
+              "tolerance": 0.01,
+              "passed": true,
+              "message": "|30.000000 - 30.000000| = 0.000000 <= 0.01"
+            },
+            {
+              "key": "eta_squared",
+              "expected": 0.97087378641,
+              "actual": 0.970873786407767,
+              "tolerance": 0.001,
+              "passed": true,
+              "message": "|0.970874 - 0.970874| = 0.000000 <= 0.001"
+            },
+            {
+              "key": "eta_squared",
+              "expected": 0.9,
+              "actual": 0.970873786407767,
+              "tolerance": 0,
+              "passed": true,
+              "message": "0.970874 > 0.9"
+            }
+          ]
+        },
+        {
+          "case_id": "CAL-R-STAT-005",
+          "description": "Pearson correlation: strong linear",
+          "passed": true,
+          "error": "",
+          "expectations": [
+            {
+              "key": "r",
+              "expected": 0.99967567197,
+              "actual": 0.9996756719722193,
+              "tolerance": 0.0001,
+              "passed": true,
+              "message": "|0.999676 - 0.999676| = 0.000000 <= 0.0001"
+            },
+            {
+              "key": "p_value",
+              "expected": 4.8389033443e-14,
+              "actual": 4.838903344294005e-14,
+              "tolerance": 0.0001,
+              "passed": true,
+              "message": "|0.000000 - 0.000000| = 0.000000 <= 0.0001"
+            },
+            {
+              "key": "t_statistic",
+              "expected": 111.0278921042,
+              "actual": 111.02789210421324,
+              "tolerance": 0.001,
+              "passed": true,
+              "message": "|111.027892 - 111.027892| = 0.000000 <= 0.001"
+            },
+            {
+              "key": "r",
+              "expected": 0.99,
+              "actual": 0.9996756719722193,
+              "tolerance": 0,
+              "passed": true,
+              "message": "0.999676 > 0.99"
+            }
+          ]
+        },
+        {
+          "case_id": "CAL-R-STAT-006",
+          "description": "Chi-square test of independence: 2x3",
+          "passed": true,
+          "error": "",
+          "expectations": [
+            {
+              "key": "chi_sq",
+              "expected": 14.5502645503,
+              "actual": 14.55026455026455,
+              "tolerance": 0.01,
+              "passed": true,
+              "message": "|14.550265 - 14.550265| = 0.000000 <= 0.01"
+            },
+            {
+              "key": "p_value",
+              "expected": 0.0006925485077,
+              "actual": 0.0006925485077024107,
+              "tolerance": 0.001,
+              "passed": true,
+              "message": "|0.000693 - 0.000693| = 0.000000 <= 0.001"
+            },
+            {
+              "key": "df",
+              "expected": 2,
+              "actual": 2.0,
+              "tolerance": 0.001,
+              "passed": true,
+              "message": "|2.000000 - 2.000000| = 0.000000 <= 0.001"
+            },
+            {
+              "key": "cramers_v",
+              "expected": 0.24124895482,
+              "actual": 0.24124895481858197,
+              "tolerance": 0.01,
+              "passed": true,
+              "message": "|0.241249 - 0.241249| = 0.000000 <= 0.01"
+            }
+          ]
+        },
+        {
+          "case_id": "CAL-R-STAT-007",
+          "description": "Mann-Whitney U: two separated groups",
+          "passed": true,
+          "error": "",
+          "expectations": [
+            {
+              "key": "U_statistic",
+              "expected": 0,
+              "actual": 0.0,
+              "tolerance": 0.5,
+              "passed": true,
+              "message": "|0.000000 - 0.000000| = 0.000000 <= 0.5"
+            },
+            {
+              "key": "p_value",
+              "expected": 0.012185780355,
+              "actual": 0.007936507936507936,
+              "tolerance": 0.005,
+              "passed": true,
+              "message": "|0.007937 - 0.012186| = 0.004249 <= 0.005"
+            },
+            {
+              "key": "p_value",
+              "expected": 0.05,
+              "actual": 0.007936507936507936,
+              "tolerance": 0,
+              "passed": true,
+              "message": "0.007937 < 0.05"
+            }
+          ]
+        },
+        {
+          "case_id": "CAL-R-STAT-008",
+          "description": "Kruskal-Wallis: 3 widely separated groups",
+          "passed": true,
+          "error": "",
+          "expectations": [
+            {
+              "key": "H_statistic",
+              "expected": 12.5,
+              "actual": 12.5,
+              "tolerance": 0.01,
+              "passed": true,
+              "message": "|12.500000 - 12.500000| = 0.000000 <= 0.01"
+            },
+            {
+              "key": "p_value",
+              "expected": 0.0019304541362,
+              "actual": 0.0019304541362277095,
+              "tolerance": 0.001,
+              "passed": true,
+              "message": "|0.001930 - 0.001930| = 0.000000 <= 0.001"
+            },
+            {
+              "key": "df",
+              "expected": 2,
+              "actual": 2.0,
+              "tolerance": 0.001,
+              "passed": true,
+              "message": "|2.000000 - 2.000000| = 0.000000 <= 0.001"
+            },
+            {
+              "key": "p_value",
+              "expected": 0.01,
+              "actual": 0.0019304541362277095,
+              "tolerance": 0,
+              "passed": true,
+              "message": "0.001930 < 0.01"
+            }
+          ]
+        },
+        {
+          "case_id": "CAL-R-STAT-009",
+          "description": "Simple linear regression: y = 3 + 2.5x + \u03b5",
+          "passed": true,
+          "error": "",
+          "expectations": [
+            {
+              "key": "intercept",
+              "expected": 2.3214286497,
+              "actual": 2.321428649653699,
+              "tolerance": 0.5,
+              "passed": true,
+              "message": "|2.321429 - 2.321429| = 0.000000 <= 0.5"
+            },
+            {
+              "key": "slope",
+              "expected": 2.5590345531,
+              "actual": 2.5590345531334586,
+              "tolerance": 0.05,
+              "passed": true,
+              "message": "|2.559035 - 2.559035| = 0.000000 <= 0.05"
+            },
+            {
+              "key": "r_squared",
+              "expected": 0.99599710694,
+              "actual": 0.9959971069445719,
+              "tolerance": 0.001,
+              "passed": true,
+              "message": "|0.995997 - 0.995997| = 0.000000 <= 0.001"
+            },
+            {
+              "key": "f_statistic",
+              "expected": 4478.7476648536,
+              "actual": 4478.747664939828,
+              "tolerance": 0.1,
+              "passed": true,
+              "message": "|4478.747665 - 4478.747665| = 0.000000 <= 0.1"
+            },
+            {
+              "key": "r_squared",
+              "expected": 0.95,
+              "actual": 0.9959971069445719,
+              "tolerance": 0,
+              "passed": true,
+              "message": "0.995997 > 0.95"
+            }
+          ]
+        }
+      ]
+    },
+    "forgedoe": {
+      "package": "forgedoe",
+      "total_cases": 6,
+      "passed_cases": 2,
+      "total_checks": 16,
+      "passed_checks": 8,
+      "pass_rate": 0.5,
+      "is_calibrated": false,
+      "cases": [
+        {
+          "case_id": "CAL-R-DOE-001",
+          "description": "2^3 full factorial: 8 runs, 3 factors",
+          "passed": true,
+          "error": "",
+          "expectations": [
+            {
+              "key": "n_runs",
+              "expected": 8,
+              "actual": 8,
+              "tolerance": 0,
+              "passed": true,
+              "message": "8 == 8"
+            },
+            {
+              "key": "n_factors",
+              "expected": 3,
+              "actual": 3,
+              "tolerance": 0,
+              "passed": true,
+              "message": "3 == 3"
+            }
+          ]
+        },
+        {
+          "case_id": "CAL-R-DOE-002",
+          "description": "2^(5-1) fractional factorial: 16 runs, Res V",
+          "passed": false,
+          "error": "",
+          "expectations": [
+            {
+              "key": "n_runs",
+              "expected": 16,
+              "actual": 32,
+              "tolerance": 0,
+              "passed": false,
+              "message": "32 != 16"
+            },
+            {
+              "key": "n_factors",
+              "expected": 5,
+              "actual": 5,
+              "tolerance": 0,
+              "passed": true,
+              "message": "5 == 5"
+            }
+          ]
+        },
+        {
+          "case_id": "CAL-R-DOE-003",
+          "description": "CCD: 3 factors, rotatable",
+          "passed": true,
+          "error": "",
+          "expectations": [
+            {
+              "key": "n_factorial",
+              "expected": 8,
+              "actual": 8,
+              "tolerance": 0,
+              "passed": true,
+              "message": "8 == 8"
+            },
+            {
+              "key": "n_factors",
+              "expected": 3,
+              "actual": 3,
+              "tolerance": 0,
+              "passed": true,
+              "message": "3 == 3"
+            },
+            {
+              "key": "n_runs",
+              "expected": 14,
+              "actual": 19,
+              "tolerance": 0,
+              "passed": true,
+              "message": "19.000000 > 14"
+            }
+          ]
+        },
+        {
+          "case_id": "CAL-R-DOE-004",
+          "description": "Box-Behnken: 3 factors",
+          "passed": false,
+          "error": "",
+          "expectations": [
+            {
+              "key": "n_runs",
+              "expected": 14,
+              "actual": 15,
+              "tolerance": 0,
+              "passed": false,
+              "message": "15 != 14"
+            },
+            {
+              "key": "n_factors",
+              "expected": 3,
+              "actual": 3,
+              "tolerance": 0,
+              "passed": true,
+              "message": "3 == 3"
+            }
+          ]
+        },
+        {
+          "case_id": "CAL-R-DOE-005",
+          "description": "Plackett-Burman: 7 factors, 12 runs",
+          "passed": false,
+          "error": "",
+          "expectations": [
+            {
+              "key": "n_runs",
+              "expected": 12,
+              "actual": 8,
+              "tolerance": 0,
+              "passed": false,
+              "message": "8 != 12"
+            },
+            {
+              "key": "n_factors",
+              "expected": 7,
+              "actual": 7,
+              "tolerance": 0,
+              "passed": true,
+              "message": "7 == 7"
+            }
+          ]
+        },
+        {
+          "case_id": "CAL-R-DOE-006",
+          "description": "RSM quadratic fit: y = 10 + 3x1 - 2x2 + 1.5x1x2 - x1\u00b2 - 0.5x2\u00b2",
+          "passed": false,
+          "error": "'list' object has no attribute 'get'",
+          "expectations": []
+        }
+      ]
+    },
+    "forgerel": {
+      "package": "forgerel",
+      "total_cases": 4,
+      "passed_cases": 3,
+      "total_checks": 15,
+      "passed_checks": 13,
+      "pass_rate": 0.8667,
+      "is_calibrated": false,
+      "cases": [
+        {
+          "case_id": "CAL-R-REL-001",
+          "description": "Weibull 2P MLE: shape=2.5, scale=100, n=50 complete",
+          "passed": true,
+          "error": "",
+          "expectations": [
+            {
+              "key": "beta",
+              "expected": 1.9566883505,
+              "actual": 1.9589,
+              "tolerance": 0.15,
+              "passed": true,
+              "message": "|1.958900 - 1.956688| = 0.002212 <= 0.15"
+            },
+            {
+              "key": "eta",
+              "expected": 87.4514451834,
+              "actual": 87.51,
+              "tolerance": 5,
+              "passed": true,
+              "message": "|87.510000 - 87.451445| = 0.058555 <= 5"
+            },
+            {
+              "key": "beta",
+              "expected": [
+                1.5,
+                4
+              ],
+              "actual": 1.9589,
+              "tolerance": 0,
+              "passed": true,
+              "message": "1.5 <= 1.958900 <= 4: True"
+            },
+            {
+              "key": "eta",
+              "expected": [
+                70,
+                140
+              ],
+              "actual": 87.51,
+              "tolerance": 0,
+              "passed": true,
+              "message": "70 <= 87.510000 <= 140: True"
+            }
+          ]
+        },
+        {
+          "case_id": "CAL-R-REL-002",
+          "description": "Weibull 2P MLE with right censoring at t=400",
+          "passed": true,
+          "error": "",
+          "expectations": [
+            {
+              "key": "beta",
+              "expected": 2.0728455401,
+              "actual": 2.0728,
+              "tolerance": 0.3,
+              "passed": true,
+              "message": "|2.072800 - 2.072846| = 0.000046 <= 0.3"
+            },
+            {
+              "key": "eta",
+              "expected": 508.8229008575,
+              "actual": 508.82,
+              "tolerance": 30,
+              "passed": true,
+              "message": "|508.820000 - 508.822901| = 0.002901 <= 30"
+            },
+            {
+              "key": "beta",
+              "expected": [
+                1,
+                3.5
+              ],
+              "actual": 2.0728,
+              "tolerance": 0,
+              "passed": true,
+              "message": "1 <= 2.072800 <= 3.5: True"
+            },
+            {
+              "key": "eta",
+              "expected": [
+                300,
+                800
+              ],
+              "actual": 508.82,
+              "tolerance": 0,
+              "passed": true,
+              "message": "300 <= 508.820000 <= 800: True"
+            }
+          ]
+        },
+        {
+          "case_id": "CAL-R-REL-003",
+          "description": "Kaplan-Meier survival curve with censoring",
+          "passed": false,
+          "error": "",
+          "expectations": [
+            {
+              "key": "survival_at_6",
+              "expected": 0.61875,
+              "actual": null,
+              "tolerance": 0.02,
+              "passed": false,
+              "message": "value not found in result"
+            },
+            {
+              "key": "survival_at_6",
+              "expected": [
+                0.3,
+                0.9
+              ],
+              "actual": null,
+              "tolerance": 0,
+              "passed": false,
+              "message": "value not found in result"
+            }
+          ]
+        },
+        {
+          "case_id": "CAL-R-REL-004",
+          "description": "MTBF chi-square CI: 5 failures in 10000 hrs",
+          "passed": true,
+          "error": "",
+          "expectations": [
+            {
+              "key": "mtbf_point",
+              "expected": 2000,
+              "actual": 2000.0,
+              "tolerance": 1,
+              "passed": true,
+              "message": "|2000.000000 - 2000.000000| = 0.000000 <= 1"
+            },
+            {
+              "key": "mtbf_lower",
+              "expected": 1092.4760161528,
+              "actual": 1092.48,
+              "tolerance": 10,
+              "passed": true,
+              "message": "|1092.480000 - 1092.476016| = 0.003984 <= 10"
+            },
+            {
+              "key": "mtbf_upper",
+              "expected": 5075.7567659441,
+              "actual": 5075.76,
+              "tolerance": 50,
+              "passed": true,
+              "message": "|5075.760000 - 5075.756766| = 0.003234 <= 50"
+            },
+            {
+              "key": "mtbf_upper",
+              "expected": 2000,
+              "actual": 5075.76,
+              "tolerance": 0,
+              "passed": true,
+              "message": "5075.760000 > 2000"
+            },
+            {
+              "key": "mtbf_lower",
+              "expected": 2000,
+              "actual": 1092.48,
+              "tolerance": 0,
+              "passed": true,
+              "message": "1092.480000 < 2000"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

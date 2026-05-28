@@ -199,7 +199,7 @@ def _analyze_case_drift(
         if check.actual is None or check.deviation is None:
             continue
 
-        # Gather historical values for this metric
+        # Gather historical values for this metric (oldest first)
         hist_values = []
         for hc in hist_cases:
             for hist_check in hc.get("checks", []):
@@ -212,36 +212,34 @@ def _analyze_case_drift(
         if len(hist_values) < 3:
             continue  # Not enough history
 
-        mean = statistics.mean(hist_values)
-        std = statistics.stdev(hist_values) if len(hist_values) > 1 else 0.0
-
-        if std < 1e-15:
-            # Constant historical value — any change is a shift
-            try:
-                current_f = float(check.actual)
-                if abs(current_f - mean) > 1e-10:
-                    alerts.append(DriftAlert(
-                        case_id=current.case_id,
-                        package=current.package,
-                        alert_type="sudden_shift",
-                        metric_key=check.key,
-                        detail=f"Value changed from constant {mean:.6f} to {current_f:.6f}",
-                        severity="critical",
-                        current_value=current_f,
-                        historical_mean=mean,
-                        historical_std=0.0,
-                    ))
-            except (TypeError, ValueError):
-                pass
-            continue
-
         try:
             current_f = float(check.actual)
         except (TypeError, ValueError):
             continue
 
-        z_score = abs(current_f - mean) / std
+        # Include current value in the series for trend analysis
+        all_values = hist_values + [current_f]
+        mean = statistics.mean(hist_values)
+        std = statistics.stdev(hist_values) if len(hist_values) > 1 else 0.0
 
+        if std < 1e-15:
+            # Constant historical value — any change is a shift
+            if abs(current_f - mean) > 1e-10:
+                alerts.append(DriftAlert(
+                    case_id=current.case_id,
+                    package=current.package,
+                    alert_type="sudden_shift",
+                    metric_key=check.key,
+                    detail=f"Value changed from constant {mean:.6f} to {current_f:.6f}",
+                    severity="critical",
+                    current_value=current_f,
+                    historical_mean=mean,
+                    historical_std=0.0,
+                ))
+            continue
+
+        # 1. Sudden shift: current value far from historical distribution
+        z_score = abs(current_f - mean) / std
         if z_score > shift_threshold:
             alerts.append(DriftAlert(
                 case_id=current.case_id,
@@ -254,18 +252,47 @@ def _analyze_case_drift(
                 historical_mean=mean,
                 historical_std=std,
             ))
-        elif z_score > drift_threshold:
-            alerts.append(DriftAlert(
-                case_id=current.case_id,
-                package=current.package,
-                alert_type="gradual_drift",
-                metric_key=check.key,
-                detail=f"Value {current_f:.6f} is {z_score:.1f}σ from historical mean {mean:.6f}",
-                severity="warning",
-                current_value=current_f,
-                historical_mean=mean,
-                historical_std=std,
-            ))
+
+        # 2. Gradual drift: linear trend test on time-ordered values.
+        #    Uses t-test on the regression slope β₁ in y = β₀ + β₁*t.
+        #    This detects monotonic trends that z-scores against a pooled mean miss.
+        n = len(all_values)
+        if n >= 4:
+            t_idx = list(range(n))
+            t_mean = (n - 1) / 2.0
+            y_mean = statistics.mean(all_values)
+            ss_t = sum((t - t_mean) ** 2 for t in t_idx)
+            sp_ty = sum((t - t_mean) * (y - y_mean) for t, y in zip(t_idx, all_values))
+
+            if ss_t > 0:
+                slope = sp_ty / ss_t
+                intercept = y_mean - slope * t_mean
+                residuals = [y - (intercept + slope * t) for t, y in zip(t_idx, all_values)]
+                ss_res = sum(r ** 2 for r in residuals)
+                mse = ss_res / (n - 2) if n > 2 else 0.0
+                se_slope = (mse / ss_t) ** 0.5 if mse > 0 and ss_t > 0 else 0.0
+
+                if se_slope > 0:
+                    t_stat = abs(slope / se_slope)
+                    # Compare against t-distribution critical value
+                    # For drift_threshold=2.0, use ~2.0 as t critical (approx for df>=5)
+                    if t_stat > drift_threshold:
+                        drift_per_run = slope
+                        alerts.append(DriftAlert(
+                            case_id=current.case_id,
+                            package=current.package,
+                            alert_type="gradual_drift",
+                            metric_key=check.key,
+                            detail=(
+                                f"Trend detected: slope={drift_per_run:.6f}/run "
+                                f"(t={t_stat:.2f}, p<0.05), "
+                                f"drifting {'up' if slope > 0 else 'down'} over {n} runs"
+                            ),
+                            severity="warning",
+                            current_value=current_f,
+                            historical_mean=mean,
+                            historical_std=std,
+                        ))
 
     return alerts
 

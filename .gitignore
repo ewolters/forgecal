@@ -9,3 +9,7 @@ build/
 *.py[cod]
 *.log
 logs/
+# Generated weekly by the calibration cron. Tracking it cost the run
+# of 2026-08-10 to a `git checkout` and made svend's public page six
+# days stale. It lives in ~/.local/state/forgecal/ now.
+golden/latest_certificate.json
